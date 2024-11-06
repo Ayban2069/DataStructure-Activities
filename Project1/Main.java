@@ -37,18 +37,25 @@ public class Main {
             switch (action) {
                 case 1:
                     array = insert(sc, array);
+                    break;
                 case 2:
                     array = delete(sc, array);
+                    break;
                 case 3:
                     update(sc, array);
+                    break;
                 case 4:
                     array = sort(array);
+                    break;
                 case 5:
                     print(array);
+                    break;
                 case 6:
                     check(array);
+                    break;
                 case 7:
                     search(sc, array);
+                    break;
                 case 0:
                     sc.close();
                     System.exit(0);
@@ -60,28 +67,63 @@ public class Main {
     }
 
     static int[] insert(Scanner sc, int[] array) {
-        System.out.print("Enter the index you want: ");
-        int index = sc.nextInt();
+    	
+    	System.out.print("Insert value to the array:\n[1] at the beginning\n[2] at the end\n[3] at a certain position\nAction:");
+    	int action = sc.nextInt();
+    	
+    	switch(action) {
+    		case 1:
+    			System.out.print("Enter the number you want to insert: ");
+                int data = sc.nextInt();
+                int[] temp = new int[array.length + 1];
 
-        if (index <= array.length) {
-            System.out.print("Enter the number you want to insert: ");
-            int data = sc.nextInt();
-            int[] temp = new int[array.length + 1];
+                temp[0] = data;
+                for (int i = 0; i < array.length; i++) {
+                    temp[i + 1] = array[i];
+                }
 
-            for (int i = 0; i < index; i++) {
-                temp[i] = array[i];
-            }
-            temp[index] = data;
-            for (int i = index; i < array.length; i++) {
-                temp[i + 1] = array[i];
-            }
+                System.out.println("Element inserted successfully.");
+                return temp;
+            
+    		case 2:
+    			System.out.print("Enter the number you want to insert: ");
+                data = sc.nextInt();
+                temp = new int[array.length + 1];
+                
+                for (int i = 0; i < array.length; i++) {
+                    temp[i] = array[i];
+                }
+                temp[temp.length - 1] = data;
 
-            System.out.println("Element inserted successfully.");
-            return temp;
-        } else {
-            System.out.println("Invalid Index. Please try again!");
-        }
-        return array;
+                System.out.println("Element inserted successfully.");
+                return temp;
+    		case 3:
+    			 System.out.print("Enter the index you want: ");
+    		        int index = sc.nextInt();
+
+    		        if (index <= array.length) {
+    		            System.out.print("Enter the number you want to insert: ");
+    		            data = sc.nextInt();
+    		            temp = new int[array.length + 1];
+
+    		            for (int i = 0; i < index; i++) {
+    		                temp[i] = array[i];
+    		            }
+    		            temp[index] = data;
+    		            for (int i = index; i < array.length; i++) {
+    		                temp[i + 1] = array[i];
+    		            }
+
+    		            System.out.println("Element inserted successfully.");
+    		            return temp;
+    		        } else {
+    		            System.out.println("Invalid Index. Please try again!");
+    		        }
+    		        return array;
+    		default:
+    			System.out.println("Invalid action!");
+    			return array;
+    	}
     }
 
     static int[] delete(Scanner sc, int[] array) {
