@@ -81,7 +81,7 @@ public class Main {
                     }
                     break;
                 case 0:
-                    System.out.println("Exiting program. Goodbye!");
+                    System.out.println("Exiting program.");
                     sc.close();
                     return;
 
