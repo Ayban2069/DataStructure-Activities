@@ -8,7 +8,7 @@ public class Main {
         int[] array = {};
         System.out.print("Do you want to use the pre-made array?\n[y/n]:");
         char input = sc.nextLine().charAt(0);
-
+       
         switch (input) {
             case 'y':
             case 'Y':
